@@ -7,14 +7,16 @@ function readBeforeBilling() {
         .then(res => res.json())
         .then(data => {
             //console.log(data[3][0]);
-            document.querySelector('h2').innerText = data[3][0][0]
-            document.querySelector('h3').innerText = data[3][0][1]
+            //document.querySelector('h2').innerText = data[3][0][0]
+            document.querySelector('h2').innerText = data[3][0][1]
 
-            fetch(`https://openlibrary.org/search.json?q=${data[3][0][1]}+${data[3][0][1]}+${data[3][0][1]}+${data[3][0][1]}+${data[3][0][1]}`)
+            fetch(`https://openlibrary.org/search.json?q=${data[3][0][1]}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    //console.log(data.docs[0]);
+                    console.log(data.docs[0]);
+                    console.log(data.docs[0].title);
+                    document.querySelector('h3').innerText = data.docs[0].title
 
 
 
@@ -33,7 +35,7 @@ function readBeforeBilling() {
 
         })
         .catch(error => {
-            alert(`error ${error}`);
+            console(`error ${error}`);
 
         })
 }
@@ -191,7 +193,7 @@ let meds = document.querySelector('input').value
 
 //https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name&terms=tuberc
 
-fetch("https://openlibrary.org/search.json?q=")
+/*fetch("https://openlibrary.org/search.json?q=")
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -207,6 +209,6 @@ fetch("https://openlibrary.org/search.json?q=")
     .catch(error => {
         console.log(`error ${error}`);
 
-    })
+    })*/
 
 
