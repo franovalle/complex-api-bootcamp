@@ -6,6 +6,7 @@ function readBeforeBilling() {
     fetch(`https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name&terms=${topic}`)
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             //console.log(data[3][0]);
             //document.querySelector('h2').innerText = data[3][0][0]
             document.querySelector('h2').innerText = data[3][0][1]
@@ -17,6 +18,8 @@ function readBeforeBilling() {
                     console.log(data.docs[0]);
                     console.log(data.docs[0].title);
                     document.querySelector('h3').innerText = data.docs[0].title
+                    //Note to self: Should probably make a ul, so more than one book can show 
+                    //Note to self: I need to work on making a conditional, if a book on topic is not available
 
 
 
@@ -27,6 +30,7 @@ function readBeforeBilling() {
                 })
                 .catch(error => {
                     console.log(`error ${error}`);
+
 
                 })
 
